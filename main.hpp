@@ -22,11 +22,23 @@ void insertionsort(vector<int> &);
 void insert(vector<int> &number, int idx)
 {
     // TODO: walk left from idx-1 while elements are greater than key,
+    int key = number[idx];
+    vector<int>::iterator it;
+    number.erase(number.begin() + idx);
+    for(it = number.begin(); it != number.begin() + idx; it++){
+        if(*it > key){
+            break;
+        }
+    }
+    number.insert(it, key);
 }
 
 void insertionsort(vector<int> &number)
 {
     // TODO: call insert(number, i) for i = 0 .. N-1.
+    for (int i = 0; i < number.size(); i++){
+        insert(number, i);
+    }
 }
 
 void makeVector(vector<int> &number, int N)
